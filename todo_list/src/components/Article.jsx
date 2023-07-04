@@ -1,11 +1,12 @@
 import Section from "./Section";
+import * as H from "../styles/HomeStyle";
 
 const Article = ({todoList, dispatch})  => {
     return (
-        <article className='main-article'>
+        <H.MainArticle>
             <Section todoList={todoList} condition={false} dispatch={dispatch}/>
             <Section todoList={todoList} condition={true}  dispatch={dispatch}/>
-        </article>
+        </H.MainArticle>
     )
 };
 

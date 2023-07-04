@@ -1,8 +1,9 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import { addTodo } from '../redux/modules/todoList';
 import { useInput } from '../hooks/useInput';
+import * as H from "../styles/HomeStyle";
 
-const Header = ({todoList, dispatch}) => {
+const Header = ({ todoList, dispatch }) => {
     const [title, setTitle, handleChangeTitle] = useInput(''); // 할 일 제목
     const [content, setContent, handleChangeContent] = useInput(''); // 할 일 내용
 
@@ -12,18 +13,18 @@ const Header = ({todoList, dispatch}) => {
     }, [todoList]);
 
     return (
-        <header className='top'>
-            <section className='header-title'>
+        <H.Header>
+            <H.HeaderTitle>
                 <span>TodoList</span>
-            </section>
-            <section className='header-section'>
-                <div className='header-section-div'>
-                    <label> 제목 </label> <input type='text' value={title}   onChange={handleChangeTitle} />
-                    <label> 내용 </label> <input type='text' value={content} onChange={handleChangeContent}/>
-                </div>
-                <button onClick={() => {dispatch(addTodo({title, content}))}}>추가하기</button>
-            </section>
-        </header>
+            </H.HeaderTitle>
+            <H.HeaderSection>
+                <H.HeaderSectionDiv>
+                    <label> 제목 </label> <H.HeaderSectionInput type='text' value={title} onChange={handleChangeTitle} />
+                    <label> 내용 </label> <H.HeaderSectionInput type='text' value={content} onChange={handleChangeContent} />
+                    </H.HeaderSectionDiv>
+                <H.HeaderSectionButton onClick={() => { dispatch(addTodo({ title, content })) }}>추가하기</H.HeaderSectionButton>
+            </H.HeaderSection>
+        </H.Header>
     )
 };
 
