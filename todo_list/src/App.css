@@ -1,4 +1,4 @@
-wrapper {
+.top {
   min-width: 800px;
   max-width: 1200px;
   display: flex;
@@ -167,4 +167,26 @@ header {
   border-radius: 10px;
 
   cursor: pointer;
+}
+
+.detail-top {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.detail-middle {
+  display: table-cell;
+  vertical-align: middle;
+  width: 600px;
+  height: 400px;
+  border: 1px solid rgb(238, 238, 238);
+}
+
+.detail-header {
+  display: flex;
+  margin: 10px;
+  gap: 200px;
 }
