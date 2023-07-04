@@ -1,29 +1,28 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import "../App.css";
+import * as S from "../styles/DetailStyle";
+import StyledLink from "../styles/LinkStyle";
 
 function Detail() {
   const param = useParams();
   const todo = useSelector((state) => (state.todoList)).find((work) => work.id === param.id);
-
+  
   return (
-    <div className='detail-top' key={todo.id}>
-      <div className='detail-middle'>
-        <header className='detail-header'>
-          <div>
-            <label>ID : </label> <span>{todo.id}</span>
-          </div>
-          <Link to={'/'}><button>이전으로</button></Link>
-        </header>
-        <article>
-          <section>
-            <div>{todo.title}</div>
-            <div>{todo.content}</div>
-          </section>
-        </article>
-      </div>
-    </div>
+    <S.DetailPage key={todo.id}>
+      <S.DetailArticle>
+        <S.ArticleHeader>
+          <p>ID : {todo.id}</p>
+          <S.ArticleButton>
+            <StyledLink to={`/`}>이전으로</StyledLink>
+          </S.ArticleButton>
+        </S.ArticleHeader>
+        <S.ArticleBody>
+          <S.DetailTitle>{todo.title}</S.DetailTitle>
+          <S.DetailContent>{todo.content}</S.DetailContent>
+        </S.ArticleBody>
+      </S.DetailArticle>
+    </S.DetailPage>
   )
 }
 export default Detail
