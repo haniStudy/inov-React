@@ -138,10 +138,10 @@ export const LiTitleP = styled.p`
 `
   
 export const LiButton = styled.button`
-    width: ${(props) => (props.buttonWidth)};
+    width: ${(props) => (props.buttonwidth)};
     height: 100%;
     background-color: transparent;
-    border: 2px solid ${(props) => (props.buttonColor)};
+    border: 2px solid ${(props) => (props.buttoncolor)};
     border-radius: 10px;
     padding: 0;
     font-size: 0.9rem;
