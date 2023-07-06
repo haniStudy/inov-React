@@ -1,4 +1,5 @@
 const Header = () => {
+    console.log("Header 렌더링");
     return (
         <header>
             <section className='header-title'>
@@ -21,4 +22,4 @@ const Header = () => {
     )
 }
 
-export default Header
+export default Header;

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { createTodo, deleteTodo, updateTodo } from '../redux/modules/todoList';
 import * as S from "../styles/DetailStyled"
@@ -6,16 +6,31 @@ import * as S from "../styles/DetailStyled"
 function Home() {
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
+    const titleRef = useRef(null);
 
     const dispatch = useDispatch();
     const todo = useSelector((state) => {
         return state.todoList;
     })
 
-    const handleChangeInput = (event) => {
-        // input태그의 name에 맞게 event처리
-        (event.target.name === "title") ? setTitle(event.target.value) : setContent(event.target.value);
+    console.log("Home 렌더링");
+    useEffect(() => {
+        titleRef.current = title;
+    }, [title]);
+
+    // const handleChangeInput = (event) => {
+    //     // input태그의 name에 맞게 event처리
+    //     inputRef.current = event.target.value;
+    //     console.log(inputRef.current);
+    //     console.log(event.target.name);
+    //     (event.target.name === "title") ? setTitle(inputRef.current) : setContent(inputRef.current);
+    // }
+
+    const handleTitleChange = (event) => {
+        titleRef.current = event.target.value;        
     }
+    
+    console.log(titleRef.current);
     return (
         <main>
             <header>
@@ -24,11 +39,13 @@ function Home() {
                 </section>
                 <section className='header-section'>
                     <div className='header-section-div'>
-                        <label>제목</label><input name="title" value={title} onChange={handleChangeInput} />
-                        <label>내용</label><input name="content" value={content} onChange={handleChangeInput} />
+                        <label>제목</label><input name="title" ref={titleRef} onChange={handleTitleChange}/>
+                        <label>내용</label><input name="content" value={content} />
                     </div>
                     <button onClick={() => {
-                        dispatch(createTodo({ title, content }));
+                        const title2 = titleRef.current.value;
+                        console.log(title2);
+                        dispatch(createTodo({ title2, content }));
                         setTitle("");
                         setContent("");
                     }}>
