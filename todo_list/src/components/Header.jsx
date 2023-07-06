@@ -1,16 +1,19 @@
-import React, { useEffect } from 'react';
+import React from 'react';
+import { useDispatch } from 'react-redux';
 import { addTodo } from '../redux/modules/todoList';
 import { useInput } from '../hooks/useInput';
 import * as H from "../styles/HomeStyle";
 
-const Header = ({ todoList, dispatch }) => {
+const Header = () => {
     const [title, setTitle, handleChangeTitle] = useInput(''); // 할 일 제목
     const [content, setContent, handleChangeContent] = useInput(''); // 할 일 내용
 
-    useEffect(() => { // 새로운 할 일 목록이 추가 되면 입력되었던 값 초기화
-        setTitle("");
-        setContent("");
-    }, [todoList]);
+    const dispatch = useDispatch();
+    const handleAddBtnClick = () => {
+        dispatch(addTodo({ title, content }));
+        setTitle('');
+        setContent('');
+    };
 
     return (
         <H.Header>
@@ -22,7 +25,7 @@ const Header = ({ todoList, dispatch }) => {
                     <label> 제목 </label> <H.HeaderSectionInput type='text' value={title} onChange={handleChangeTitle} />
                     <label> 내용 </label> <H.HeaderSectionInput type='text' value={content} onChange={handleChangeContent} />
                     </H.HeaderSectionDiv>
-                <H.HeaderSectionButton onClick={() => { dispatch(addTodo({ title, content })) }}>추가하기</H.HeaderSectionButton>
+                <H.HeaderSectionButton onClick={handleAddBtnClick}>추가하기</H.HeaderSectionButton>
             </H.HeaderSection>
         </H.Header>
     )
