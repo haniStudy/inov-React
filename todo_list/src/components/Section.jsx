@@ -17,17 +17,19 @@ const Section = ({ todoList, condition, dispatch }) => {
                             <H.LiTop>
                                 <H.LiTitle>
                                     <H.LiTitleP>{todo.title}</H.LiTitleP>      {/* 제목 */}
-                                    <H.LiButton buttonWidth={'20%'} buttonColor={'dodgerBlue'}>
-                                        <StyledLink to={`/detail/${todo.id}`}>상세</StyledLink>
-                                    </H.LiButton>
+                                    <StyledLink linkwidth={'20%'} to={`/detail/${todo.id}`}>
+                                        <H.LiButton buttonwidth={'100%'} buttoncolor={'dodgerBlue'}>
+                                            상세
+                                        </H.LiButton>
+                                    </StyledLink>
                                 </H.LiTitle>
                                 <H.LiContent>
                                     <H.LiContentP>{todo.content}</H.LiContentP>  {/* 내용 */}
                                 </H.LiContent>
                             </H.LiTop>
                             <H.LiBottom>
-                                <H.LiButton buttonWidth={'100%'} buttonColor={'red'} onClick={() => dispatch(deleteTodo(todo))}>삭제하기</H.LiButton>
-                                <H.LiButton buttonWidth={'100%'} buttonColor={'green'} onClick={() => dispatch(modifyTodo(todo))}>{btnName}</H.LiButton>
+                                <H.LiButton buttonwidth={'100%'} buttoncolor={'red'} onClick={() => dispatch(deleteTodo(todo))}>삭제하기</H.LiButton>
+                                <H.LiButton buttonwidth={'100%'} buttoncolor={'green'} onClick={() => dispatch(modifyTodo(todo))}>{btnName}</H.LiButton>
                             </H.LiBottom>
                         </H.SectionLi>
                     )
