@@ -7,15 +7,17 @@ import StyledLink from "../styles/LinkStyle";
 function Detail() {
   const param = useParams();
   const todo = useSelector((state) => (state.todoList)).find((work) => work.id === param.id);
-  
+
   return (
     <S.DetailPage key={todo.id}>
       <S.DetailArticle>
         <S.ArticleHeader>
           <p>ID : {todo.id}</p>
-          <S.ArticleButton>
-            <StyledLink to={`/`}>이전으로</StyledLink>
-          </S.ArticleButton>
+          <StyledLink to={`/`}>
+            <S.ArticleButton>
+              이전으로
+            </S.ArticleButton>
+          </StyledLink>
         </S.ArticleHeader>
         <S.ArticleBody>
           <S.DetailTitle>{todo.title}</S.DetailTitle>

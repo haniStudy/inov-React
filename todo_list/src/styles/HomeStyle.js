@@ -1,4 +1,4 @@
-import { styled } from 'styled-components';
+import styled from 'styled-components';
 
 export const Main = styled.main`
     min-width: 800px;
@@ -138,10 +138,10 @@ export const LiTitleP = styled.p`
 `
   
 export const LiButton = styled.button`
-    width: ${(props) => (props.buttonWidth)};
+    width: ${({$buttonwidth}) => $buttonwidth};
     height: 100%;
     background-color: transparent;
-    border: 2px solid ${(props) => (props.buttonColor)};
+    border: 2px solid ${({$buttoncolor}) => $buttoncolor};
     border-radius: 10px;
     padding: 0;
     font-size: 0.9rem;

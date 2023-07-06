@@ -1,11 +1,11 @@
 import Section from "./Section";
 import * as H from "../styles/HomeStyle";
 
-const Article = ({todoList, dispatch})  => {
+const Article = ()  => {
     return (
         <H.MainArticle>
-            <Section todoList={todoList} condition={false} dispatch={dispatch}/>
-            <Section todoList={todoList} condition={true}  dispatch={dispatch}/>
+            <Section condition={false} />
+            <Section condition={true} />
         </H.MainArticle>
     )
 };
